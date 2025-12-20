@@ -1,0 +1,20 @@
+import numpy as np
+import pandas as pd
+from sklearn.impute import KNNImputer
+
+# Sample dataset
+data = {
+    "X": [2, 4, 6, 8, 9],
+    "Y": [5, 7, np.nan, 10, 12]
+}
+
+df = pd.DataFrame(data)
+print("Before Imputation:\n", df)
+
+# Create KNN Imputer
+imputer = KNNImputer(n_neighbors=3)
+
+# Apply Imputation
+imputed_df = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+
+print("\nAfter KNN Imputation:\n", imputed_df)
